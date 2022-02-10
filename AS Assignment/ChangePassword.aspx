@@ -9,8 +9,8 @@
         function validate() {
             var str = document.getElementById('<%=tb_npwd.ClientID %>').value;
 
-            if (str.length < 8) {
-                document.getElementById("lbl_pwdchecker").innerHTML = "Password Length Must be at least 8 Characters";
+            if (str.length < 12) {
+                document.getElementById("lbl_pwdchecker").innerHTML = "Password Length Must be at least 12 Characters";
                 document.getElementById("lbl_pwdchecker").style.color = "Red";
                 return ("too_short");
             }
