@@ -364,16 +364,16 @@ namespace AS_Assignment
 
         void changelockstatus()
         {
+            string userid = tb_userid.Text;
             SqlConnection connection = new SqlConnection(MYDBConnectionString);
             string format = "MM/dd/yyy HH:mm:ss";
-            string sql = "Update Account set Locked=1, Lockdatetime='" + DateTime.Now.ToString(format) + "' WHERE EMAIL = '" + tb_userid.Text + "'";
+            string sql = "Update Account set Locked=1, Lockdatetime='" + DateTime.Now.ToString(format) + "' WHERE EMAIL = @userid";
             SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@userid", userid);
             try
             {
                 connection.Open();
                 command.CommandText = sql;
-                command.Parameters.AddWithValue("@Locked", 1);
-                command.Parameters.AddWithValue("@Lockdatetime", DateTime.Now.ToString(format));
                 command.Connection = connection;
                 command.ExecuteNonQuery();
 
@@ -388,15 +388,15 @@ namespace AS_Assignment
 
         void unlockaccount()
         {
+            string userid = tb_userid.Text;
             SqlConnection connection = new SqlConnection(MYDBConnectionString);
-            string sql = "Update Account set Locked=0, Lockdatetime=NULL WHERE EMAIL = '" + tb_userid.Text + "'";
+            string sql = "Update Account set Locked=0, Lockdatetime=NULL WHERE EMAIL = @userid";
             SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@userid", userid);
             try
             {
                 connection.Open();
                 command.CommandText = sql;
-                command.Parameters.AddWithValue("@Locked", 0);
-                command.Parameters.AddWithValue("@Lockdatetime", "NULL");
                 command.Connection = connection;
                 command.ExecuteNonQuery();
 

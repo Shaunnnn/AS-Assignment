@@ -83,9 +83,11 @@ namespace AS_Assignment
 
         protected void changePassword()
         {
+            string userid = tb_userid.Text;
             SqlConnection connection = new SqlConnection(MYDBConnectionString);
-            string sql = "Update Account set PasswordHash= '" + finalHash + "', PasswordSalt= '" + salt + "' WHERE EMAIL = '" + tb_userid.Text + "'";
+            string sql = "Update Account set PasswordHash= '" + finalHash + "', PasswordSalt= '" + salt + "' WHERE EMAIL = @userid";
             SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@userid", userid);
             try
             {
                 connection.Open();
