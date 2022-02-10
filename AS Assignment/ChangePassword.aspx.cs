@@ -18,12 +18,7 @@ namespace AS_Assignment
         static string salt;
         byte[] Key;
         byte[] IV;
-/*
-        public void ProcessRequest(HttpContext ctx)
-        {
-            ctx.Response.Write(
-                "The page \"" + ctx.Request.QueryString["ChangePassword.aspx"] + "\" was not found.");
-        }*/
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -77,7 +72,8 @@ namespace AS_Assignment
             }
 
             finally { con.Close(); }
-            Response.Redirect("Login.aspx?msg2=" + HttpUtility.UrlEncode("password changed!"), false);
+            string verify = "password changed!";
+            Response.Redirect("Login.aspx?msg= " + HttpUtility.UrlEncode(verify), false);
 
         }
 

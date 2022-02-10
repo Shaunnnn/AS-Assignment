@@ -24,15 +24,9 @@ namespace AS_Assignment
             public List<string> ErrorMessage { get; set; }
         }
 
-/*        public void ProcessRequest(HttpContext ctx)
-        {
-            ctx.Response.Write(
-                "The page \"" + ctx.Request.QueryString["msg"] + "\" was not found.");
-        }*/
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label4.Text = HttpUtility.UrlDecode(Request.QueryString["msg"]);
-            Label4.Text = HttpUtility.UrlDecode(Request.QueryString["msg2"]);
+            Label4.Text = Request.QueryString["msg"];
             if (IsPostBack)
             {
                 

@@ -30,7 +30,7 @@ namespace AS_Assignment
 
         }
 
-
+        [Obsolete]
         protected void btn_Submit_Click(object sender, EventArgs e)
         {
             if (Page.IsValid)
@@ -116,6 +116,7 @@ namespace AS_Assignment
             }
         }
 
+        [Obsolete]
         protected void createAccount()
         {
             string fileName = Path.GetFileName(FileUpload1.PostedFile.FileName);

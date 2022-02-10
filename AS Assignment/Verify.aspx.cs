@@ -14,7 +14,7 @@ namespace AS_Assignment
         string MYDBConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MYDB"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label3.Text = "The activation code has been sent to " + HttpUtility.UrlDecode(Request.QueryString["emailadd"].ToString()); 
+            Label3.Text = "The activation code has been sent to " + Request.QueryString["emailadd"].ToString();
         }
 
         protected void btn_Verify_Click(object sender, EventArgs e)
@@ -65,7 +65,8 @@ namespace AS_Assignment
                                 }
 
                                 finally { con.Close(); }
-                                Response.Redirect("Login.aspx?msg=" + HttpUtility.UrlEncode("Your account has been verified!"), false);
+                                string verify = "Your account has been verified!";
+                                Response.Redirect("Login.aspx?msg= " + HttpUtility.UrlEncode(verify), false);
 
                             }
                             else
