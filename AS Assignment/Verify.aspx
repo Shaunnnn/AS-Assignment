@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Verify.aspx.cs" Inherits="AS_Assignment.Verify" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Verify.aspx.cs" Inherits="AS_Assignment.Verify" ValidateRequest="false" %>
 
 <!DOCTYPE html>
 

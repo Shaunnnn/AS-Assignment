@@ -65,7 +65,7 @@ namespace AS_Assignment
                                 }
 
                                 finally { con.Close(); }
-                                Response.Redirect("Login.aspx?msg= Your account has been verified!", false);
+                                Response.Redirect("Login.aspx?msg=" + HttpUtility.UrlEncode("Your account has been verified!"), false);
 
                             }
                             else

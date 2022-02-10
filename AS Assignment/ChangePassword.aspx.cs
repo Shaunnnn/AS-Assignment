@@ -77,7 +77,7 @@ namespace AS_Assignment
             }
 
             finally { con.Close(); }
-            Response.Redirect("Login.aspx?msg2=password changed!", false);
+            Response.Redirect("Login.aspx?msg2=" + HttpUtility.UrlEncode("password changed!"), false);
 
         }
 
