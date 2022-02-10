@@ -66,8 +66,8 @@ namespace AS_Assignment
             Session.Clear();
             Session.Abandon();
             Session.RemoveAll();
-
-            Response.Redirect("Login.aspx", false);
+            string logout = "You have logout!";
+            Response.Redirect("Login.aspx?msg= " + HttpUtility.UrlEncode(logout), false);
             if (Request.Cookies["ASP.NET_SessionId"] != null)
             {
                 Response.Cookies["ASP.NET_SessionId"].Value = string.Empty;
