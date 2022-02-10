@@ -111,7 +111,7 @@ namespace AS_Assignment
 
                 finally { connection.Close(); }
 
-                Response.Redirect("Verify.aspx?emailadd=" + tb_email.Text);
+                Response.Redirect("Verify.aspx?emailadd=" + HttpUtility.UrlEncode(tb_email.Text));
             }
         }
 
