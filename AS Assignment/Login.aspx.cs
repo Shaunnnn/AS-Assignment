@@ -48,11 +48,13 @@ namespace AS_Assignment
         {
             if (Page.IsValid)
             {
+                string input = tb_userid.Text;
                 bool lockstatus;
                 DateTime locktimedate = DateTime.Now;
                 SqlConnection connection = new SqlConnection(MYDBConnectionString);
-                string sql = "select locked,lockdatetime FROM Account WHERE EMAIL ='" + tb_userid.Text + "'";
+                string sql = "select locked,lockdatetime FROM Account WHERE EMAIL = @userid";
                 SqlCommand command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@userid", input);
 
                 try
                 {
