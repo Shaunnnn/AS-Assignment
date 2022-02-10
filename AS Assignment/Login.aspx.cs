@@ -26,7 +26,7 @@ namespace AS_Assignment
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label4.Text = Request.QueryString["msg"];
+            Label4.Text = HttpUtility.UrlDecode(Request.QueryString["msg"]);
             if (IsPostBack)
             {
                 
