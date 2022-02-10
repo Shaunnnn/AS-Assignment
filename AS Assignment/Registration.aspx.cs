@@ -12,6 +12,7 @@ using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Net.Mail;
 using System.IO;
+using System.Configuration;
 
 namespace AS_Assignment
 {
@@ -213,14 +214,15 @@ namespace AS_Assignment
             return score;
         }
 
+        [Obsolete]
         private void sendcode()
         {
-            string name = "sitconnect4u@gmail.com";
-            string pwd = "sitconnect123";
+            var fromEmail = ConfigurationSettings.AppSettings["mail"];
+            var fromPassword = ConfigurationSettings.AppSettings["pass"];
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
             smtp.Port = 587;
-            smtp.Credentials = new System.Net.NetworkCredential(name,pwd);
+            smtp.Credentials = new System.Net.NetworkCredential(fromEmail,fromPassword);
             smtp.EnableSsl = true;
             MailMessage msg = new MailMessage();
             msg.Subject = "Activation Code to Verify Email Address";
