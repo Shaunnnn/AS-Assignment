@@ -19,9 +19,11 @@ namespace AS_Assignment
 
         protected void btn_Verify_Click(object sender, EventArgs e)
         {
+            string emailadd = Request.QueryString["emailadd"];
             SqlConnection connection = new SqlConnection(MYDBConnectionString);
-            string sql = "select * FROM ACCOUNT WHERE EMAIL='" + Request.QueryString["emailadd"] + "'";
+            string sql = "select * FROM ACCOUNT WHERE EMAIL= @emailadd";
             SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@emailadd", emailadd);
             try
             {
                 connection.Open();
@@ -106,17 +108,22 @@ namespace AS_Assignment
 
         private void changestatus()
         {
-            var emailadd = Request.QueryString["emailadd"];
+            string emailadd = Request.QueryString["emailadd"];
             SqlConnection connection = new SqlConnection(MYDBConnectionString);
-            string sql = "Update Account set Status='Verified' WHERE EMAIL = '" + emailadd + "'";
+            string sql = "Update Account set Status='Verified' WHERE EMAIL = @emailadd";
             SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@emailadd",emailadd);
             try
             {
-                connection.Open();
-                command.CommandText = sql;
-                command.Parameters.AddWithValue("@Status", "Verified");
-                command.Connection = connection;
-                command.ExecuteNonQuery();
+                using (SqlDataAdapter sda = new SqlDataAdapter())
+                {
+                    connection.Open();
+                    command.CommandText = sql;
+                    command.Parameters.AddWithValue("@Status", "Verified");
+                    command.Connection = connection;
+                    command.ExecuteNonQuery();
+
+                }
 
             }
             catch (Exception ex)
