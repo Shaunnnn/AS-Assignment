@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ChangePassword.aspx.cs" Inherits="AS_Assignment.ChangePassword" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ChangePassword.aspx.cs" Inherits="AS_Assignment.ChangePassword" ValidateRequest="false"%>
 
 <!DOCTYPE html>
 
