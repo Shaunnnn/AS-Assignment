@@ -18,6 +18,12 @@ namespace AS_Assignment
         static string salt;
         byte[] Key;
         byte[] IV;
+/*
+        public void ProcessRequest(HttpContext ctx)
+        {
+            ctx.Response.Write(
+                "The page \"" + ctx.Request.QueryString["ChangePassword.aspx"] + "\" was not found.");
+        }*/
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -84,6 +90,8 @@ namespace AS_Assignment
             {
                 connection.Open();
                 command.CommandText = sql;
+                command.Parameters.AddWithValue("@PasswordHash", finalHash);
+                command.Parameters.AddWithValue("@PasswordSalt", salt);
                 command.Connection = connection;
                 command.ExecuteNonQuery();
 

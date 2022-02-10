@@ -24,6 +24,11 @@ namespace AS_Assignment
             public List<string> ErrorMessage { get; set; }
         }
 
+/*        public void ProcessRequest(HttpContext ctx)
+        {
+            ctx.Response.Write(
+                "The page \"" + ctx.Request.QueryString["msg"] + "\" was not found.");
+        }*/
         protected void Page_Load(object sender, EventArgs e)
         {
             Label4.Text = Request.QueryString["msg"];
@@ -367,6 +372,8 @@ namespace AS_Assignment
             {
                 connection.Open();
                 command.CommandText = sql;
+                command.Parameters.AddWithValue("@Locked", 1);
+                command.Parameters.AddWithValue("@Lockdatetime", DateTime.Now.ToString(format));
                 command.Connection = connection;
                 command.ExecuteNonQuery();
 
@@ -388,6 +395,8 @@ namespace AS_Assignment
             {
                 connection.Open();
                 command.CommandText = sql;
+                command.Parameters.AddWithValue("@Locked", 0);
+                command.Parameters.AddWithValue("@Lockdatetime", "NULL");
                 command.Connection = connection;
                 command.ExecuteNonQuery();
 
