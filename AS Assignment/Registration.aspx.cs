@@ -215,10 +215,12 @@ namespace AS_Assignment
 
         private void sendcode()
         {
+            string name = "sitconnect4u@gmail.com";
+            string pwd = "sitconnect123";
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
             smtp.Port = 587;
-            smtp.Credentials = new System.Net.NetworkCredential("sitconnect4u@gmail.com","sitconnect123");
+            smtp.Credentials = new System.Net.NetworkCredential(name,pwd);
             smtp.EnableSsl = true;
             MailMessage msg = new MailMessage();
             msg.Subject = "Activation Code to Verify Email Address";
