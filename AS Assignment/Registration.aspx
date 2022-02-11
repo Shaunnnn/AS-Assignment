@@ -83,7 +83,7 @@
                     </td>
                     <td class="style2">
                         <asp:TextBox ID="tb_creditCard" runat="server" Height="32px" Width="281px"></asp:TextBox>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" ControlToValidate="tb_creditCard" Text="Enter a valid credit card number" ValidationExpression="^[0-9]+$" runat="server" Style="color: red" />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" ControlToValidate="tb_creditCard" Text="Enter a valid credit card number" ValidationExpression="\d{16}" runat="server" Style="color: red" />
                         <br />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="tb_creditCard" runat="server" ErrorMessage="Please enter your credit card info" Style="color: red"></asp:RequiredFieldValidator>
 

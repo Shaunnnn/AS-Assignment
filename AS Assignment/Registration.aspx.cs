@@ -187,7 +187,7 @@ namespace AS_Assignment
         private int checkPassword(string password)
         {
             int score = 0;
-            if (password.Length < 8)
+            if (password.Length < 12)
             {
                 return 1;
             }
